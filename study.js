@@ -19,6 +19,7 @@ value = "aaaaaaa"; // 文字列は「''」か「""」か「``」で囲む
 let a = 10;
 let b = 99;
 
+
 // 足し算
 let add = a + b;
 
