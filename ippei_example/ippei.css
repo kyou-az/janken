@@ -1,0 +1,86 @@
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-flow: column;
+    background: #e2dfdf;
+    color: #383737;
+}
+
+h1 {
+    margin: 0;
+}
+.header {
+    background: #5a5858;
+    color: #fff;
+    flex: 1;
+}
+
+.container {
+    flex: 14;
+    width: 70%;
+    margin: 16px auto;
+    display: flex;
+    flex-flow: column;
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.comp-hand-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 5;
+}
+.result-wrapper {
+    flex: 2;
+}
+
+.my-hand-wrapper {
+    flex: 3;
+    border: 1px solid gray;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.my-hand-title {
+    margin: 0;
+    position: absolute;
+    top: -3px;
+    left: 8px;
+    padding: 3px;
+    background: white;
+    line-height: 0;
+}
+.my-hands {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.my-hand {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+    max-width: 200px;
+}
+.my-hand:active {
+    transition: 0.1s;
+    opacity: 0.3;
+}
+.my-hand-img {
+    width: 100%;
+}
+
+#result {
+    text-align: center;
+}
+
