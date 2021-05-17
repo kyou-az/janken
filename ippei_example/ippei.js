@@ -39,12 +39,14 @@ function startJanken(myHand) {
   displayResult(myHand, compHand)
 }
 
-function showMessage() {
+function showMessage(message) {
+  $('#message').text(message);
   $('.my-hands').hide();
   $('.message-wrapper').show();
 }
 
 function showEndMessage() {
+  $('#end-message').text('敵をやっつけた!!!');
   $('.my-hands').hide();
   $('.end-message-wrapper').show();
 }
@@ -57,24 +59,23 @@ function showEndMessage() {
 function displayResult(myHand, compHand) {
   const diff = myHand - compHand;
   if (diff === 0) {
-    $('#message').text(`${handToString(myHand)}と${handToString(compHand)}であいこです。`);
+    showMessage(`${handToString(myHand)}と${handToString(compHand)}であいこです。`);
   } else if (diff === -1 || diff === 2) {
-    $('#message').text(`${handToString(myHand)}と${handToString(compHand)}であなたの勝ちです。10のダメージを与えた。`);
     compHp = compHp - 10;
     if (compHp === 0) {
       damageFlash($('.monster'), true);
-      $('#end-message').text('敵をやっつけた!!!');
       showEndMessage();
       return;
     } else {
       damageFlash($('.monster'));
+      showMessage(`${handToString(myHand)}と${handToString(compHand)}であなたの勝ちです。10のダメージを与えた。`);
     }
   } else {
-    $('#message').text(`${handToString(myHand)}と${handToString(compHand)}であなたの負けです。10のダメージをくらった。`);
-    damageFlash($('#damage'), true);
     myHp = myHp - 10;
+    showMessage(`${handToString(myHand)}と${handToString(compHand)}であなたの負けです。10のダメージをくらった。`);
+    damageFlash($('#damage'), true);
+
   }
-  showMessage();
   $('#hp').text(myHp);
 }
 
@@ -123,7 +124,11 @@ function damageFlash(element, isEndNoDisplay = false) {
   });
 }
 
-
+/**
+ * 手の定数から文字列を返す処理
+ * @param hand
+ * @returns {string}
+ */
 function handToString(hand) {
   switch (hand) {
     case GOO:
