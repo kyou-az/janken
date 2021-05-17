@@ -3,6 +3,11 @@ const GOO = 0;
 const CHOKI = 1;
 const PA = 2;
 
+let myHp = 250;
+let compHp = 250;
+
+$('#hp').text(myHp);
+
 // ユーザーが手を入力したときのハンドラ
 $("#my-hand-goo").click(function () {
   startJanken(GOO)
@@ -26,6 +31,9 @@ function startJanken(myHand) {
   $('.comp-hand-initial-title').hide();
   displayCompImage(compHand);
   displayResult(myHand, compHand)
+  if (compHp === 0) {
+    console.log('敵を倒した!!');
+  }
 }
 
 /**
@@ -39,9 +47,13 @@ function displayResult(myHand, compHand) {
     $('#result').text('あいこ');
   } else if (diff === -1 || diff === 2) {
     $('#result').text('あなたの勝ち');
+    compHp = compHp - 10;
   } else {
     $('#result').text('あなたの負け');
+    damageFlash();
+    myHp = myHp - 10;
   }
+  $('#hp').text(myHp);
 }
 
 
@@ -65,6 +77,29 @@ function displayCompImage(compHand) {
       break;
   }
   imageTab.fadeIn();
+}
+
+/**
+ * ダメージのフラッシュを点滅させる。
+ */
+function damageFlash() {
+  $('#damage').fadeOut(50 , function () {
+    $('#damage').fadeIn(50, function () {
+      $('#damage').fadeOut(50 , function () {
+        $('#damage').fadeIn(50, function () {
+          $('#damage').fadeOut(50 , function () {
+            $('#damage').fadeIn(50, function () {
+              $('#damage').fadeOut(50 , function () {
+                $('#damage').fadeIn(50, function () {
+                  $('#damage').fadeOut(50);
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  });
 }
 
 

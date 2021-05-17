@@ -3,8 +3,10 @@ body {
     margin: 0;
     display: flex;
     flex-flow: column;
-    background: #e2dfdf;
-    color: #383737;
+    background-image: url("./img/dl.png");
+    background-size: cover;
+    color: white;
+    font-weight: 700;
 }
 
 h1 {
@@ -14,6 +16,8 @@ h1 {
     background: #5a5858;
     color: #fff;
     flex: 1;
+    display: flex;
+    align-items: center;
 }
 
 .container {
@@ -22,9 +26,48 @@ h1 {
     margin: 16px auto;
     display: flex;
     flex-flow: column;
-    background: white;
+    background: rgba(0,0,0,0.6);
     padding: 16px;
     border-radius: 8px;
+    position: relative;
+}
+
+#damage {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: red;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    opacity: 0.3;
+}
+
+.my-status-wrapper {
+    flex: 4;
+}
+
+
+
+.me-wrapper {
+    border: 4px solid white;
+    border-radius: 8px;
+    padding: 12px;
+    width: 20%;
+    background: #232222;
+    position: relative;
+}
+
+.my-name {
+    margin: 0;
+    position: absolute;
+    top: -4px;
+    left: 8px;
+    padding: 3px;
+    background: #232222;
+    line-height: 0;
 }
 
 .comp-hand-wrapper {
@@ -39,21 +82,22 @@ h1 {
 
 .my-hand-wrapper {
     flex: 3;
-    border: 1px solid gray;
+    border: 4px solid white;
     border-radius: 8px;
     padding: 12px;
     display: flex;
     justify-content: center;
     position: relative;
+    background: #232222;
 }
 
 .my-hand-title {
     margin: 0;
     position: absolute;
-    top: -3px;
+    top: -4px;
     left: 8px;
     padding: 3px;
-    background: white;
+    background: #232222;
     line-height: 0;
 }
 .my-hands {
