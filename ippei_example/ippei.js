@@ -4,7 +4,7 @@ const CHOKI = 1;
 const PA = 2;
 
 let myHp = 250;
-let compHp = 250;
+let compHp = 20;
 
 $('#hp').text(myHp);
 
@@ -21,6 +21,11 @@ $("#my-hand-pa").click(function () {
   startJanken(PA)
 });
 
+$(".message-wrapper").click(function () {
+  $('.message-wrapper').hide();
+  $('.my-hands').show();
+})
+
 /**
  * ユーザーの手の入力をトリガーにじゃんけんをスタートする処理
  * @param myHand
@@ -29,11 +34,19 @@ function startJanken(myHand) {
   // 相手の手を乱数で確定する処理
   let compHand = Math.floor(Math.random() * 3);
   $('.comp-hand-initial-title').hide();
+
   displayCompImage(compHand);
   displayResult(myHand, compHand)
-  if (compHp === 0) {
-    console.log('敵を倒した!!');
-  }
+}
+
+function showMessage() {
+  $('.my-hands').hide();
+  $('.message-wrapper').show();
+}
+
+function showEndMessage() {
+  $('.my-hands').hide();
+  $('.end-message-wrapper').show();
 }
 
 /**
@@ -44,18 +57,26 @@ function startJanken(myHand) {
 function displayResult(myHand, compHand) {
   const diff = myHand - compHand;
   if (diff === 0) {
-    $('#result').text('あいこ');
+    $('#message').text(`${handToString(myHand)}と${handToString(compHand)}であいこです。`);
   } else if (diff === -1 || diff === 2) {
-    $('#result').text('あなたの勝ち');
+    $('#message').text(`${handToString(myHand)}と${handToString(compHand)}であなたの勝ちです。10のダメージを与えた。`);
     compHp = compHp - 10;
+    if (compHp === 0) {
+      damageFlash($('.monster'), true);
+      $('#end-message').text('敵をやっつけた!!!');
+      showEndMessage();
+      return;
+    } else {
+      damageFlash($('.monster'));
+    }
   } else {
-    $('#result').text('あなたの負け');
-    damageFlash();
+    $('#message').text(`${handToString(myHand)}と${handToString(compHand)}であなたの負けです。10のダメージをくらった。`);
+    damageFlash($('#damage'), true);
     myHp = myHp - 10;
   }
+  showMessage();
   $('#hp').text(myHp);
 }
-
 
 /**
  * 相手の手を表示する処理
@@ -82,16 +103,16 @@ function displayCompImage(compHand) {
 /**
  * ダメージのフラッシュを点滅させる。
  */
-function damageFlash() {
-  $('#damage').fadeOut(50 , function () {
-    $('#damage').fadeIn(50, function () {
-      $('#damage').fadeOut(50 , function () {
-        $('#damage').fadeIn(50, function () {
-          $('#damage').fadeOut(50 , function () {
-            $('#damage').fadeIn(50, function () {
-              $('#damage').fadeOut(50 , function () {
-                $('#damage').fadeIn(50, function () {
-                  $('#damage').fadeOut(50);
+function damageFlash(element, isEndNoDisplay = false) {
+  element.fadeOut(50 , function () {
+    element.fadeIn(50, function () {
+      element.fadeOut(50 , function () {
+        element.fadeIn(50, function () {
+          element.fadeOut(50 , function () {
+            element.fadeIn(50, function () {
+              element.fadeOut(50 , function () {
+                element.fadeIn(50, function () {
+                  isEndNoDisplay && element.fadeOut(50);
                 });
               });
             });
@@ -100,6 +121,18 @@ function damageFlash() {
       });
     });
   });
+}
+
+
+function handToString(hand) {
+  switch (hand) {
+    case GOO:
+      return 'グー'
+    case CHOKI:
+      return 'チョキ'
+    case PA:
+      return 'パー'
+  }
 }
 
 

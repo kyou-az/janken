@@ -70,18 +70,32 @@ h1 {
     line-height: 0;
 }
 
-.comp-hand-wrapper {
+.monster-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 5;
+    flex: 10;
 }
+
+.monster {
+    height: 300px;
+}
+
 .result-wrapper {
-    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+#comp-hand-image {
+    display: none;
+    width: 50px;
+    height: 50px;
 }
 
 .my-hand-wrapper {
-    flex: 3;
+    flex: 7;
     border: 4px solid white;
     border-radius: 8px;
     padding: 12px;
@@ -101,7 +115,7 @@ h1 {
     line-height: 0;
 }
 .my-hands {
-    width: 80%;
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -128,3 +142,34 @@ h1 {
     text-align: center;
 }
 
+.message-wrapper {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.end-message-wrapper {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.next-pointer {
+    font-size: 24px;
+    animation: flash 1s linear infinite;
+}
+
+@keyframes flash {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+
+    100% {
+        opacity: 1;
+    }
+}
