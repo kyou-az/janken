@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./ippei.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="item-modal-wrapper">
+        <div class="contents">
+            <div class="item-modal">
+                <p class="box-name">どうぐ</p>
+                <div class="items">
+                    <p id="yakusou">やくそう x <span id="yakusou-count"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header">
+        <h1>じゃんけん</h1>
+    </div>
+    <div class="container">
+        <div id="damage"></div>
+        <div class="my-status-wrapper">
+            <div class="me-wrapper">
+                <p class="my-name">えにくす</p>
+                <div>
+                    <p>H: <span id="hp"></span></p>
+                    <p>M: 0</p>
+                    <p>ゆ: 30</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="monster-wrapper">
+            <img class="monster" src="" alt="">
+        </div>
+
+        <div class="result-wrapper">
+            <h1 class="comp-hand-initial-title">自分の手をクリック!!</h1>
+            <img id="comp-hand-image" src="" alt="">
+        </div>
+
+        <div class="my-hand-wrapper">
+            <p class="my-hand-title">コマンド</p>
+
+            <div class="my-hands-wrapper">
+                <div class="my-hands">
+                    <button id="my-hand-goo" class="my-hand">
+                        グーを出す <img class="my-hand-img" src="./img/gu--.png" alt="">
+                    </button>
+                    <button id="my-hand-choki" class="my-hand">
+                        チョキを出す <img class="my-hand-img" src="./img/tuoki.png" alt="">
+                    </button>
+                    <button id="my-hand-pa" class="my-hand">
+                        パーを出す <img class="my-hand-img" src="./img/pa-.png" alt="">
+                    </button>
+                    <button id="my-hand-item" class="my-hand">
+                        どうぐを使う
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="start-message-wrapper">
+                <button id="start-button">始める</button>
+            </div>
+
+            <div class="message-wrapper">
+                <h1>
+                    <span id="message"></span>
+                    <span class="next-pointer">▶</span>
+                </h1>
+            </div>
+
+            <div class="end-message-wrapper">
+                <h1>
+                    <span id="end-message"></span>
+                    <span class="next-pointer">▶</span>
+                </h1>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 音源の読み込み -->
+    <audio id="damage-sound" preload="auto">
+        <source src="./sound/damage6.mp3" type="audio/mp3">
+    </audio>
+    <audio id="attack-sound" preload="auto">
+        <source src="./sound/damage7.mp3" type="audio/mp3">
+    </audio>
+    <audio id="miss-sound" preload="auto">
+        <source src="./sound/nc80989.wav" type="audio/wav">
+    </audio>
+    <audio id="win-sound" preload="auto">
+        <source src="./sound/nc179246.wav" type="audio/wav">
+    </audio>
+    <audio id="game-sound" preload="auto" loop>
+        <source src="./sound/back.mp3" type="audio/mp3">
+    </audio>
+    <audio id="game-over-sound" preload="auto">
+        <source src="./sound/gameover.mp3" type="audio/mp3">
+    </audio>
+    <audio id="yakusou-sound" preload="auto">
+        <source src="./sound/kaifuku.mp3" type="audio/mp3">
+    </audio>
+
+</body>
+<script type="text/javascript" src="ippei.js"></script>
+</html>
