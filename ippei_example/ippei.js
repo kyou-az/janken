@@ -11,7 +11,7 @@ $(function () {
    * プレイヤークラス
    */
   class Player {
-    constructor(hp, str, def, yakusou = 3) {
+    constructor(hp, str, def, yakusou = 99) {
       this.maxHp = hp;
       this.hp = hp;
       this.str = str;
@@ -110,7 +110,7 @@ $(function () {
 
   // [プレイヤー]
   const MY_MAX_HP = 500;
-  const player = new Player(MY_MAX_HP, 400, 255);
+  const player = new Player(MY_MAX_HP, 450, 255);
 
   // [コンピューター]
   let enemy;
@@ -118,11 +118,20 @@ $(function () {
   $('#hp').text(player.hp);
   $('#yakusou-count').text(player.yakusou);
 
+  let gameSound;
+
   // ゲームをスタートする。
   $('#start-button').click(function () {
     if (stage > MAX_STAGE) return;
 
-    $('#game-sound')[0].play();
+    if (stage === MAX_STAGE) {
+      gameSound = $('#boss-sound')[0];
+      gameSound.play();
+    } else {
+      gameSound = $('#game-sound')[0];
+      gameSound.play();
+    }
+
     $('.start-message-wrapper').hide();
     monsterSet();
     $('.my-hands-wrapper').show();
@@ -130,7 +139,6 @@ $(function () {
 
 // ユーザーが手を入力したときのハンドラ
   $("#my-hand-goo").click(function () {
-    console.log(enemy);
     startJanken(GOO)
   });
 
@@ -167,18 +175,20 @@ $(function () {
     $('#game-over-sound')[0].pause();
     $('#game-over-sound')[0].currentTime = 0;
     toMax();
+    if (stage > MAX_STAGE) $('#start-button').text('全クリ');
+
     $('.start-message-wrapper').show();
   })
 
   function monsterSet() {
     if (stage === 1) {
       $('.monster').attr('src', './img/monster.png')
-      enemy = new Enemy(500, 200, 20);
+      enemy = new Enemy(1000, 200, 20);
     }
 
     if (stage === 2) {
       $('.monster').attr('src', './img/stage2.png')
-      enemy = new Enemy(100, 100, 80);
+      enemy = new Enemy(1500, 400, 80);
     }
     $('.monster').fadeIn(1000);
   }
@@ -226,8 +236,8 @@ $(function () {
     const damage = player.attack(enemy);
     if (enemy.hp <= 0) {
       damageFlash($('.monster'), true);
-      $('#game-sound')[0].pause();
-      $('#game-sound')[0].currentTime = 0;
+      gameSound.pause();
+      gameSound.currentTime = 0;
       $('#win-sound')[0].play();
       showEndMessage('敵をやっつけた！！！');
       stage++;
@@ -248,8 +258,8 @@ $(function () {
     $('#hp').text(player.hp);
     if (player.hp <= 0) {
       showEndMessage('パーティーは絶滅しました。');
-      $('#game-sound')[0].pause();
-      $('#game-sound')[0].currentTime = 0;
+      gameSound.pause();
+      gameSound.currentTime = 0;
       $('#game-over-sound')[0].play();
     } else {
       showMessage(`${handToString(myHand)}と${handToString(compHand)}であなたの負けです。${damage}のダメージをくらった。`);
@@ -331,7 +341,7 @@ $(function () {
 
   function toMax () {
     player.hp = MY_MAX_HP;
-    player.yakusou = 4;
+    player.yakusou = 99;
     $('#hp').text(player.hp);
     $('#yakusou-count').text(player.yakusou);
     statusCheck()
