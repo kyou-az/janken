@@ -5,6 +5,8 @@ const CHOKI = 2;
 let myWinCount = 0;
 let myLoseCount = 0;
 
+let meHp = 100;
+
 $("#myhand-goo").click(function (event) {
   console.log(event.target.value);
   displayMyImage(GOO);

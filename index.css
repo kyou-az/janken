@@ -17,3 +17,7 @@ p {
 .monster-image {
   height: 300px;
 }
+
+#me-hp {
+  width: 100%;
+}
