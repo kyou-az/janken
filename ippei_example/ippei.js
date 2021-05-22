@@ -64,7 +64,6 @@ $(function () {
     openItem () {
       $('#item-modal-wrapper').fadeIn(100);
     }
-
   }
 
   /**
@@ -110,7 +109,7 @@ $(function () {
 
   // [プレイヤー]
   const MY_MAX_HP = 500;
-  const player = new Player(MY_MAX_HP, 450, 255);
+  const player = new Player(MY_MAX_HP, 255, 255);
 
   // [コンピューター]
   let enemy;
