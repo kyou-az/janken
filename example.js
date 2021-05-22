@@ -8,68 +8,57 @@ console.log(Math.random());
 console.log(Math.floor(Math.random() * 3));
 
 $("#test").click(function () {
-  startJanken()
+  startJanken();
 });
-
-
 
 function startJanken() {
   // 相手の手を乱数で確定する処理
   let compHand = Math.floor(Math.random() * 3);
   let myHand = $("#my-hand").val();
 
-  myHand = Number(myHand)
+  myHand = Number(myHand);
 
-  console.log('自分:' + handToString(myHand) + ' 相手:' + handToString(compHand))
+  console.log(
+    "自分:" + handToString(myHand) + " 相手:" + handToString(compHand)
+  );
   //　自分のパターン
   if (myHand === GOO) {
-
     // 相手の手のパターン
     if (compHand === GOO) {
-      console.log('あいこ')
+      console.log("あいこ");
     } else if (compHand === CHOKI) {
-      console.log('かち')
+      console.log("かち");
     } else if (compHand === PA) {
-      console.log('まけ')
+      console.log("まけ");
     }
-
   } else if (myHand === CHOKI) {
-
     // 相手の手のパターン
     if (compHand === GOO) {
-      console.log('まけ')
+      console.log("まけ");
     } else if (compHand === CHOKI) {
-      console.log('あいこ')
+      console.log("あいこ");
     } else if (compHand === PA) {
-      console.log('かち')
+      console.log("かち");
     }
-
   } else if (myHand === PA) {
-
     // 相手の手のパターン
     if (compHand === GOO) {
-      console.log('かち')
+      console.log("かち");
     } else if (compHand === CHOKI) {
-      console.log('まけ')
+      console.log("まけ");
     } else if (compHand === PA) {
-      console.log('あいこ')
+      console.log("あいこ");
     }
-
   }
 }
 
 function handToString(hand) {
   switch (hand) {
     case GOO:
-      return 'グー';
+      return "グー";
     case PA:
-      return 'パー';
+      return "パー";
     case CHOKI:
-      return 'チョキ';
+      return "チョキ";
   }
 }
-
-
-
-
-

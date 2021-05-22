@@ -6,10 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<style>
+    .hand-wraper{
+    height: 222px;
+    margin-top: 15px;
+    }
+</style>
 </head>
 <body>
-    <input id="my-hand" type="text">
-    <button id="test">押す</button>
+<div>
+    <p>勝ち: <span id="my-win-count">0</span></p>
+    <p>負け: <span id="my-lose-count">0</span></p>    
+</div>
+<div class="hand-wraper">
+    <img id="comp-hand-image" src="" alt="">
+</div>
+
+<div class="hand-wraper">
+    <img id="my-hand-image" src="" alt="">
+</div>
+<div>
+    <p id="janken-info"></p>
+    <p id="janken-result-txt"></p>
+</div>
+
+<div>
+    <p>勝敗: <span id="janken-result"></span></p>
+</div>
+
+<div id="myHand">
+    <input type="button" id="myhand-goo" value="グー">
+    <input type="button" id="myhand-thoki" value="チョキ">
+    <input type="button" id="myhand-pa" value="パー">
+</div>
 
 </body>
 <script type="text/javascript" src="janken.js"></script>
