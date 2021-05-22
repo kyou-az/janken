@@ -1,0 +1,254 @@
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-flow: column;
+    background-image: url("./img/dl.png");
+    background-size: cover;
+    color: white;
+    font-weight: 700;
+}
+
+h1 {
+    margin: 0;
+}
+.header {
+    background: #5a5858;
+    color: #fff;
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    flex: 14;
+    width: 70%;
+    margin: 16px auto;
+    display: flex;
+    flex-flow: column;
+    background: rgba(0,0,0,0.6);
+    padding: 16px;
+    border-radius: 8px;
+    position: relative;
+}
+
+#damage {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: red;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    opacity: 0.3;
+}
+
+.my-status-wrapper {
+    flex: 4;
+}
+
+
+
+.me-wrapper {
+    border: 4px solid white;
+    border-radius: 8px;
+    padding: 12px;
+    width: 19vmin;
+    background: #232222;
+    position: relative;
+    font-size: 2vmin;
+}
+
+.comp-hand-initial-title, #message, #end-message {
+    font-size: 3vmin;
+}
+
+.my-name {
+    margin: 0;
+    position: absolute;
+    top: -4px;
+    left: 8px;
+    padding: 3px;
+    background: #232222;
+    line-height: 0;
+}
+
+.monster-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 10;
+}
+
+.monster {
+    display: none;
+    height: 33vmin;
+}
+
+.result-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+#comp-hand-image {
+    display: none;
+    width: 8vmin;
+    height: 8vmin;
+}
+
+.my-hand-wrapper {
+    flex: 8;
+    border: 4px solid white;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    background: #232222;
+}
+
+.my-hand-title {
+    margin: 0;
+    position: absolute;
+    top: -4px;
+    left: 8px;
+    padding: 3px;
+    background: #232222;
+    line-height: 0;
+}
+.my-hands {
+    max-width: 20vmin;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+}
+
+.my-hand {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 2vmin;
+}
+.my-hand:active {
+    transition: 0.1s;
+    opacity: 0.3;
+}
+.my-hand-img {
+    max-width: 4vmin;
+}
+
+#result {
+    text-align: center;
+}
+
+.start-message-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#start-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+    color: white;
+    font-size: 4vmin;
+    font-weight: 700;
+}
+
+.my-hands-wrapper {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.message-wrapper {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.end-message-wrapper {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.next-pointer {
+    font-size: 4vmin;
+    animation: flash 1s linear infinite;
+}
+
+@keyframes flash {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+
+    100% {
+        opacity: 1;
+    }
+}
+
+#item-modal-wrapper {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    z-index: 2000;
+    background-color: rgba(0, 0, 0, 0.45);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.contents {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.item-modal {
+    width: 60%;
+    height: 60%;
+    border: 4px solid white;
+    border-radius: 8px;
+    padding: 12px;
+    background: #232222;
+    position: relative;
+    font-size: 2vmin;
+}
+
+.box-name {
+    margin: 0;
+    position: absolute;
+    top: -4px;
+    left: 8px;
+    padding: 3px;
+    background: #232222;
+    line-height: 0;
+}
