@@ -1,0 +1,19 @@
+body {
+  /* 背景画像の読み込み */
+  background-image: url('./img/background.png');
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
+}
+p {
+  margin: 0;
+}
+
+.monster-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.monster-image {
+  height: 300px;
+}
