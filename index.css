@@ -9,6 +9,7 @@ p {
   margin: 0;
 }
 
+
 .monster-wrapper {
   display: flex;
   justify-content: center;
@@ -20,4 +21,47 @@ p {
 
 #me-hp {
   width: 100%;
+}
+
+.hp-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.comp-hand {
+  display: flex;
+  justify-content: center;
+  height: 150px;
+}
+
+.my-hand {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+#comp-hand-image {
+  width: 70px;
+  height: 70px;
+}
+
+#myhand-goo {
+  width: 25%;
+  height: 25%;
+}
+
+#myhand-thoki {
+width: 25%;
+height: 25%;
+}
+
+#myhand-pa {
+width: 25%;
+height: 25%;
+}
+
+#janken-result {
+font-size: large;
+display: flex;
+justify-content: center;
 }

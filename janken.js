@@ -5,7 +5,8 @@ const CHOKI = 2;
 let myWinCount = 0;
 let myLoseCount = 0;
 
-let meHp = 100;
+let myHp = 100;
+let enemyHp = 100;
 
 $("#myhand-goo").click(function (event) {
   console.log(event.target.value);
@@ -38,32 +39,47 @@ function displayResult(myHand, compHand) {
       $("#janken-result-txt").text("あいこ");
     } else if (compHand === CHOKI) {
       $("#janken-result-txt").text("かち");
+      damageFlash($(".monster-image"));
+      enemyHp = enemyHp - 40;
+      $("#enemy-hp").val(enemyHp);
       myWinCount++;
       $("#my-win-count").text(myWinCount);
     } else if (compHand === PA) {
       $("#janken-result-txt").text("まけ");
+      myHp = myHp - 40;
+      $("#my-hp").val(myHp);
       myLoseCount++;
       $("#my-lose-count").text(myLoseCount);
     }
   } else if (myHand === CHOKI) {
     if (compHand === GOO) {
       $("#janken-result-txt").text("まけ");
+      myHp = myHp - 40;
+      $("#my-hp").val(myHp);
       myLoseCount++;
       $("#my-lose-count").text(myLoseCount);
     } else if (compHand === CHOKI) {
       $("#janken-result-txt").text("あいこ");
     } else if (compHand === PA) {
       $("#janken-result-txt").text("かち");
+      damageFlash($(".monster-image"));
+      enemyHp = enemyHp - 40;
+      $("#enemy-hp").val(enemyHp);
       myWinCount++;
       $("#my-win-count").text(myWinCount);
     }
   } else if (myHand === PA) {
     if (compHand === GOO) {
       $("#janken-result-txt").text("かち");
+      damageFlash($(".monster-image"));
+      enemyHp = enemyHp - 40;
+      $("#enemy-hp").val(enemyHp);
       myWinCount++;
       $("#my-win-count").text(myWinCount);
     } else if (compHand === CHOKI) {
       $("#janken-result-txt").text("まけ");
+      myHp = myHp - 40;
+      $("#my-hp").val(myHp);
       myLoseCount++;
       $("#my-lose-count").text(myLoseCount);
     } else if (compHand === PA) {
@@ -71,12 +87,15 @@ function displayResult(myHand, compHand) {
     }
   }
 
-  if (myWinCount == 3) {
-    $("#janken-result").text("あなたの勝ちです");
-    $("#myHand").fadeOut();
-  } else if (myLoseCount == 3) {
-    $("#janken-result").text("あなたの負けです");
-    $("#myHand").fadeOut();
+  if (enemyHp <= 0) {
+    $("#janken-result").text("あなたの勝ち！！");
+    $(".my-hand").fadeOut();
+    $("#comp-hand-image").fadeOut();
+    $(".monster-wrapper").fadeOut();
+  } else if (myHp <= 0) {
+    $("#janken-result").text("あなたの負け！！");
+    $(".my-hand").fadeOut();
+    $("#comp-hand-image").fadeOut();
   }
 }
 
@@ -117,4 +136,24 @@ function handToString(hand) {
     case CHOKI:
       return "チョキ";
   }
+}
+
+function damageFlash(element, isEndNoDisplay = false) {
+  element.fadeOut(50, function () {
+    element.fadeIn(50, function () {
+      element.fadeOut(50, function () {
+        element.fadeIn(50, function () {
+          element.fadeOut(50, function () {
+            element.fadeIn(50, function () {
+              element.fadeOut(50, function () {
+                element.fadeIn(50, function () {
+                  isEndNoDisplay && element.fadeOut(50);
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  });
 }
