@@ -11,40 +11,38 @@
 <body>
 
     
-<div>
-    <p>勝ち: <span id="my-win-count">0</span></p>
-    <p>負け: <span id="my-lose-count">0</span></p>    
+<div class="hp-wrapper">
+    <p>Hunter</p>
+    <progress id="my-hp" max="100" value="100"></progress>    
+    <p>Dragon</p>
+    <progress id="enemy-hp" max="100" value="100"></progress>   
 </div>
 
-<progress id="me-hp" max="100" value="100"></progress>
+
 
 <div class="monster-wrapper">
     <!-- モンスター画像の読み込み -->
     <img class="monster-image" src="./img/monster.png" alt="">
 </div>
-<div class="hand-wraper">
+<div class="comp-hand">
     <img id="comp-hand-image" src="" alt="">
 </div>
 
-<div class="hand-wraper">
-    <img id="my-hand-image" src="" alt="">
-</div>
 <div>
-    <p id="janken-info"></p>
-    <p id="janken-result-txt"></p>
+    <p id="janken-result"></p>
 </div>
 
-<div>
-    <p>勝敗: <span id="janken-result"></span></p>
-</div>
 
-<div id="myHand">
-    <input type="button" id="myhand-goo" value="グー">
-    <input type="button" id="myhand-thoki" value="チョキ">
-    <input type="button" id="myhand-pa" value="パー">
+<im id="my-hand-image" src="" alt=""></im>
+
+
+<div class="my-hand">
+    <input type="image" src="./img/gu--.png" id="myhand-goo" value="グー">
+    <input type="image" src="./img/tuoki.png" id="myhand-thoki" value="チョキ">
+    <input type="image" src="./img/pa-.png" id="myhand-pa" value="パー">
 </div>
-    <input id="my-hand" type="text">
-    <button id="test">押す</button>
+    
+</div>
 </body>
 <script type="text/javascript" src="janken.js"></script>
 <!-- <script type="text/javascript" src="study.js"></script> -->
